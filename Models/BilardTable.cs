@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.Models
+﻿namespace Bilard.Models
 {
 	public class BilardTable
 	{

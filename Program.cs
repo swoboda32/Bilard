@@ -1,9 +1,9 @@
-﻿using ConsoleApp1.DTO;
-using ConsoleApp1.Models;
+﻿using Bilard.DTO;
+using Bilard.Models;
 using System;
 using System.Numerics;
 
-namespace ConsoleApp1;
+namespace Bilard;
 
 public class Program
 {

@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1.DTO
+﻿namespace Bilard.DTO
 {
 	public class InputDataDTO
 	{

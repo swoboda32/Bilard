@@ -32,9 +32,10 @@ public class Program
 				{
 					bilaPoPierwszymOdbiciu = bila;
 				}
-
+				
 				do
 				{
+
 					bila.PX += bila.Prosta.Wx;
 					bila.PY += bila.Prosta.Wy;
 					if ((bila.PX == bilardTable.GL[0] && bila.PY == bilardTable.GL[1])
@@ -46,6 +47,7 @@ public class Program
 					{
 						break;
 					}
+					//odbicei góra dół
 					else if (bila.PY >= bilardTable.GL[1] || bila.PY <= bilardTable.DL[1])
 					{
 						bila.Prosta.Wy *= -1;
@@ -63,6 +65,7 @@ public class Program
 						}
 						break;
 					}
+					//odbicie prawo lewo
 					else if (bila.PX <= bilardTable.GL[0] || bila.PX >= bilardTable.GP[0])
 					{
 						bila.Prosta.Wx *= -1;
@@ -187,7 +190,14 @@ public class Prosta
 		public static Prosta Create(decimal[] pointA, decimal[] pointB)
 		{
 			Prosta prosta = new();
-			prosta.M = (pointB[1] - pointA[1]) / (pointB[0] - pointA[0]);
+			if((pointB[0] - pointA[0]) == 0)
+			{
+				prosta.M = 0;
+			}
+			else
+			{
+				prosta.M = (pointB[1] - pointA[1]) / (pointB[0] - pointA[0]);
+			}
 			prosta.B = pointB[1] - (prosta.M * pointA[0]);
 			return prosta;
 		}
@@ -221,7 +231,14 @@ public class Bila
 
 		public static void UpdateProsta(Bila bila)
 		{
-			bila.Prosta.M = bila.Prosta.Wy / bila.Prosta.Wx;
+			if(bila.Prosta.Wx == 0)
+			{
+				bila.Prosta.M = 0;
+			}
+			else
+			{
+				bila.Prosta.M = bila.Prosta.Wy / bila.Prosta.Wx;
+			}
 			bila.Prosta.B = bila.PY - (bila.Prosta.M * bila.PX);
 		}
 	}
